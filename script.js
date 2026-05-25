@@ -7,6 +7,10 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const form = document.getElementById('booking-form');
 const note = document.getElementById('form-note');
 const JOSE_PHONE = '+16827129271';
+// Email-to-SMS gateway. T-Mobile: <number>@tmomail.net.
+// Bookings get cc'd here so a text lands on the phone in real time.
+const SMS_GATEWAY = '9784732513@tmomail.net';
+const NOTIFY_EMAIL = 'jose@lawnsbyjv.com';
 
 form.addEventListener('submit', async (e) => {
   const action = form.getAttribute('action') || '';
@@ -29,7 +33,8 @@ form.addEventListener('submit', async (e) => {
     );
     note.className = 'form-note success';
     note.textContent = 'Opening your email app… you can also text Jose at 682-712-9271.';
-    window.location.href = `mailto:jose@lawnsbyjv.com?subject=${subject}&body=${body}`;
+    const cc = encodeURIComponent(SMS_GATEWAY);
+    window.location.href = `mailto:${NOTIFY_EMAIL}?cc=${cc}&subject=${subject}&body=${body}`;
     return;
   }
 
