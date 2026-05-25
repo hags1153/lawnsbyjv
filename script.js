@@ -29,7 +29,7 @@ form.addEventListener('submit', async (e) => {
     );
     note.className = 'form-note success';
     note.textContent = 'Opening your email app… you can also text Jose at 682-712-9271.';
-    window.location.href = `mailto:jose@lawnsbyjosev.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:jose@lawnsbyjv.com?subject=${subject}&body=${body}`;
     return;
   }
 
